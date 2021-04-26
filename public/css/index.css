@@ -1,0 +1,81 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+:root {
+    --ff-Arial: Arial, Helvetica, sans-serif;
+    --bg-black: #2A2A2B;
+    --cl-white: #ffffff;
+    --cl-purple: #8B37BC;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background: var(--bg-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+article {
+    background: var(--cl-white);
+    border-radius: 1.2rem;
+}
+
+#join-form {
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 3.5rem;
+    margin: 0.6rem 0rem 0.4rem 1rem;
+    font-family: var(--ff-Arial);
+    font-weight: 600;
+}
+
+#gap {
+    height: 0.4rem;
+}
+
+label {
+    font-size: 1.8rem;
+    margin: 0.5rem 0rem 0.4rem 1rem;
+    font-family: var(--ff-Arial);
+    font-weight: 100;
+}
+
+input {
+    margin: 0rem 1.5rem 0.5rem 1.5rem;
+    height: 2.3rem;
+    font-size: 1.4rem;
+    text-indent: 0.4rem;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+}
+
+button {
+    color: var(--cl-white);
+    font-size: 2rem;
+    text-align: center;
+    background: var(--cl-purple);
+    margin: 1rem 2rem;
+    padding: 0.4rem;
+    font-family: var(--ff-Arial);
+    font-weight: 500;
+    letter-spacing: 0.1rem;
+    border: none;
+}
+
+#sandesh-logo {
+    position: absolute;
+    bottom: 2.5%;
+    left: 1.1%;
+    width: 13rem;
+}

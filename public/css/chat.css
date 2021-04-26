@@ -1,0 +1,86 @@
+* {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+
+:root {
+    --ff-Arial: Arial, Helvetica, sans-serif;
+    --bg-black: #2A2A2B;
+    --bg-grey: #F5F5F5;
+    --cl-white: #ffffff;
+    --cl-purple: #8B37BC;
+}
+
+article {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    font-family: var(--ff-Arial);
+}
+
+#profile-section {
+    color: var(--cl-white);
+    background: var(--bg-black);
+    width: 25rem;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 1rem;
+    font-weight: 500;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    font-weight: 300;
+}
+
+#space-section {
+    background: #646C79;
+    width: 1rem;
+}
+
+#chat-section {
+    background: var(--bg-grey);
+    width: calc(100vw - 27rem);
+    position: relative;
+}
+
+#message-area {
+    display: flex;
+    position: absolute;
+    bottom: 1.3%;
+    left: -0.7%;
+    height: 2.3rem;
+}
+
+#messages {
+    font-family: var(--ff-Arial);
+    font-size: 1.3rem;
+}
+
+input {
+    margin: 0rem 1rem 0.5rem 1.5rem;
+    height: 2.3rem;
+    width: 52vw;
+    font-size: 1.4rem;
+    text-indent: 0.4rem;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+}
+
+button {
+    font-size: 1.2rem;
+    height: 100%;
+    color: white;
+    margin-right: 1rem;
+    padding: 0rem 0.5rem 0rem 0.5rem;
+    background: var(--cl-purple);
+    border: none;
+}
