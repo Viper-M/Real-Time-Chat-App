@@ -12,15 +12,14 @@
 <body>
     <article>
         <section id="profile-section">
-            <h1>CS-BS</h1>
-            <h2>Mohit Sharma</h2>
+            
         </section>
         <section id="space-section">
         </section>
         <section id="chat-section">
             <div id="messages"></div>
             <div id="message-area">
-                <input type="search" placeholder="Enter your message" required>
+                <input type="search" placeholder="Enter your message" required autocomplete="off">
                 <button id="send-message">SEND</button>
                 <button id="send-location">SEND LOCATION</button>
             </div>
@@ -40,6 +39,16 @@
             <br/>
             <a href="{{url}}" target="_blank">My Current Location</a>
         </div>
+    </script>
+
+    <script id="sidebar-template" type="text/html">
+        <h2>{{room}}</h2>
+        <h3>Users</h3>
+        <ul>
+            {{#users}}
+            <li>{{username}}</li>
+            {{/users}}
+        </ul>
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>

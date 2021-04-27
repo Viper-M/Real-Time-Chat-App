@@ -59,6 +59,9 @@ h2 {
 }
 
 #messages {
+    display: block;
+    height: 91vh;
+    overflow: auto;
     font-family: var(--ff-Arial);
     font-size: 1.3rem;
 }
