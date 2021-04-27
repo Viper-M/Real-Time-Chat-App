@@ -6,6 +6,9 @@ const messageTemplate = document.querySelector('#message-template').innerHTML
 const locationmessageTemplate = document.querySelector('#location-message-template').innerHTML
 const sidebarTemplate = document.querySelector('#sidebar-template').innerHTML
 
+const $sendMessage = document.querySelector('#send-message')
+const $input = document.querySelector('input')
+const $sendLocation = document.querySelector('#send-location')
 
 const { username, room } = Qs.parse(location.search, { ignoreQueryPrefix : true })
 
@@ -40,6 +43,9 @@ socket.on('locationmessage',(message)=>{
 
 socket.on('message',(message)=>{
     console.log(message)
+    if(message.text == ""){
+        return ''
+    }
     const html = Mustache.render(messageTemplate,{
         username: message.username,
         message: message.text,
@@ -60,12 +66,16 @@ socket.on('roomdata',({room,users})=>{
     document.querySelector('#profile-section').insertAdjacentHTML('beforeend', html)
 })
 
-document.querySelector('#send-message').addEventListener('click',(e)=>{
+$sendMessage.addEventListener('click',(e)=>{
     e.preventDefault()
-
+    $sendMessage.setAttribute('disabled','disabled')
     const message = document.querySelector('input').value
 
     socket.emit('sendmessage' , message , (error)=>{
+        $sendMessage.removeAttribute('disabled')
+        $input.value = ''
+        $input.focus()
+
         if(error){
             alert(error)
         }
@@ -75,8 +85,8 @@ document.querySelector('#send-message').addEventListener('click',(e)=>{
     })
 })
 
-document.querySelector('#send-location').addEventListener('click', () => {
-
+$sendLocation.addEventListener('click', () => {
+    $sendLocation.setAttribute('disabled', 'disabled')
     if(!navigator.geolocation){
         return alert("Your browser doesn't support Geolocation")
     }
@@ -86,6 +96,7 @@ document.querySelector('#send-location').addEventListener('click', () => {
             latitude : position.coords.latitude,
             longitude : position.coords.longitude
         }, () => {
+            $sendLocation.removeAttribute('disabled')
             console.log('Location Shared!')
         })
     })
