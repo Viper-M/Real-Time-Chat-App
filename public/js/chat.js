@@ -10,9 +10,9 @@ const $sendMessage = document.querySelector('#send-message')
 const $input = document.querySelector('input')
 const $sendLocation = document.querySelector('#send-location')
 
-const { username, room } = Qs.parse(location.search, { ignoreQueryPrefix : true })
+const { username, room } = Qs.parse(location.search, { ignoreQueryPrefix: true })
 
-const autoscroll = ()=>{
+const autoscroll = () => {
     const $newMessage = $messages.lastElementChild
 
     const newMessageStyles = getComputedStyle($newMessage)
@@ -25,37 +25,37 @@ const autoscroll = ()=>{
 
     const scrollOffset = $messages.scrollTop + visibleHeight
 
-    if(containerHeight - newMessageHeight <= scrollOffset){
+    if (containerHeight - newMessageHeight <= scrollOffset) {
         $messages.scrollTop = $messages.scrollHeight
     }
 }
 
-socket.on('locationmessage',(message)=>{
+socket.on('locationmessage', (message) => {
     console.log(message)
     const html = Mustache.render(locationmessageTemplate, {
-        username : message.username,
-        url : message.url,
+        username: message.username,
+        url: message.url,
         createdAt: moment(message.createdAt).format('h:mm a')
     })
     $messages.insertAdjacentHTML('beforeend', html)
     autoscroll()
 })
 
-socket.on('message',(message)=>{
+socket.on('message', (message) => {
     console.log(message)
-    if(message.text == ""){
+    if (message.text == "") {
         return ''
     }
-    const html = Mustache.render(messageTemplate,{
+    const html = Mustache.render(messageTemplate, {
         username: message.username,
         message: message.text,
-        createdAt : moment(message.createdAt).format('h:mm a')
+        createdAt: moment(message.createdAt).format('h:mm a')
     })
-    $messages.insertAdjacentHTML('beforeend',html)
+    $messages.insertAdjacentHTML('beforeend', html)
     autoscroll()
 })
 
-socket.on('roomdata',({room,users})=>{
+socket.on('roomdata', ({ room, users }) => {
     console.log(room)
     console.log(users)
     const html = Mustache.render(sidebarTemplate, {
@@ -66,35 +66,35 @@ socket.on('roomdata',({room,users})=>{
     document.querySelector('#profile-section').insertAdjacentHTML('beforeend', html)
 })
 
-$sendMessage.addEventListener('click',(e)=>{
+$sendMessage.addEventListener('click', (e) => {
     e.preventDefault()
-    $sendMessage.setAttribute('disabled','disabled')
+    $sendMessage.setAttribute('disabled', 'disabled')
     const message = document.querySelector('input').value
 
-    socket.emit('sendmessage' , message , (error)=>{
+    socket.emit('sendmessage', message, (error) => {
         $sendMessage.removeAttribute('disabled')
         $input.value = ''
         $input.focus()
 
-        if(error){
+        if (error) {
             alert(error)
         }
-        else{
-        console.log('Message is delivered')
+        else {
+            console.log('Message is delivered')
         }
     })
 })
 
 $sendLocation.addEventListener('click', () => {
     $sendLocation.setAttribute('disabled', 'disabled')
-    if(!navigator.geolocation){
+    if (!navigator.geolocation) {
         return alert("Your browser doesn't support Geolocation")
     }
-    
-    navigator.geolocation.getCurrentPosition((position)=>{
-        socket.emit('sendlocation',{
-            latitude : position.coords.latitude,
-            longitude : position.coords.longitude
+
+    navigator.geolocation.getCurrentPosition((position) => {
+        socket.emit('sendlocation', {
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude
         }, () => {
             $sendLocation.removeAttribute('disabled')
             console.log('Location Shared!')
@@ -102,8 +102,8 @@ $sendLocation.addEventListener('click', () => {
     })
 })
 
-socket.emit('join', {username,room}, (error)=>{
-    if(error){
+socket.emit('join', { username, room }, (error) => {
+    if (error) {
         alert(error)
         location.href = '/'
     }

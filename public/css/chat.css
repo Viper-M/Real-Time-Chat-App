@@ -23,6 +23,8 @@ article {
     color: var(--cl-white);
     background: var(--bg-black);
     width: 25rem;
+    height: 100vh;
+    overflow: auto;
 }
 
 h1 {
@@ -100,9 +102,15 @@ button {
     background: var(--cl-purple);
     border: none;
 }
-.messages{
+
+button:hover {
+    cursor: pointer;
+}
+
+.messages {
     margin-bottom: 1rem;
 }
+
 .messages span {
     text-transform: capitalize;
 }

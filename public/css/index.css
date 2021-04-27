@@ -73,6 +73,10 @@ button {
     border: none;
 }
 
+button:hover {
+    cursor: pointer;
+}
+
 #sandesh-logo {
     position: absolute;
     bottom: 2.5%;
