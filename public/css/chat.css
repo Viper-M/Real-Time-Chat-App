@@ -26,16 +26,28 @@ article {
 }
 
 h1 {
+    text-transform: uppercase;
     text-align: center;
     font-size: 2.5rem;
     margin-top: 1rem;
+    margin-left: -0.4rem;
     font-weight: 500;
 }
 
 h2 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     margin-top: 1rem;
     margin-left: 1rem;
+    margin-bottom: 1rem;
+    font-weight: 300;
+}
+
+li {
+    text-transform: capitalize;
+    list-style: none;
+    font-size: 1.4rem;
+    margin-top: 0.5rem;
+    margin-left: 2rem;
     font-weight: 300;
 }
 
@@ -60,6 +72,7 @@ h2 {
 
 #messages {
     display: block;
+    margin: 0rem 1rem 1rem 1rem;
     height: 91vh;
     overflow: auto;
     font-family: var(--ff-Arial);
@@ -86,4 +99,11 @@ button {
     padding: 0rem 0.5rem 0rem 0.5rem;
     background: var(--cl-purple);
     border: none;
+}
+
+.messages{
+    margin-top: 0.6rem;
+}
+.messages span {
+    text-transform: capitalize;
 }

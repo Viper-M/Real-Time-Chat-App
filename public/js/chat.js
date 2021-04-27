@@ -56,6 +56,7 @@ socket.on('roomdata',({room,users})=>{
         room,
         users
     })
+    document.querySelector('#profile-section').innerHTML = ''
     document.querySelector('#profile-section').insertAdjacentHTML('beforeend', html)
 })
 
@@ -66,7 +67,7 @@ document.querySelector('#send-message').addEventListener('click',(e)=>{
 
     socket.emit('sendmessage' , message , (error)=>{
         if(error){
-            console.log(error)
+            alert(error)
         }
         else{
         console.log('Message is delivered')

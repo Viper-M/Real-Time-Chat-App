@@ -12,7 +12,6 @@
 <body>
     <article>
         <section id="profile-section">
-            
         </section>
         <section id="space-section">
         </section>
@@ -27,14 +26,14 @@
     </article>
 
     <script id="message-template" type="text/html">
-        <div>
+        <div class="messages">
             <span>{{username}} {{createdAt}}</span>
             <p>{{message}}</p>
         </div>
     </script>
 
     <script id="location-message-template" type="text/html">
-        <div>
+        <div class="messages">
             <span>{{username}} {{createdAt}}</span>
             <br/>
             <a href="{{url}}" target="_blank">My Current Location</a>
@@ -42,8 +41,8 @@
     </script>
 
     <script id="sidebar-template" type="text/html">
-        <h2>{{room}}</h2>
-        <h3>Users</h3>
+        <h1>{{room}}</h1>
+        <h2>Users</h2>
         <ul>
             {{#users}}
             <li>{{username}}</li>
